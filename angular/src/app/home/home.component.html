@@ -1,38 +1,13 @@
 <div class="row">
   <div class="col-md-9">
-    <div class="table-responsive">
-      <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+    <div class="table-responsive border">
+      <table class="table table-hover table-outline table-vcenter text-nowrap card-table m-0">
         <tbody>
-        <tr>
+        <tr *ngFor="let items of topics.data">
           <td>
-            <a  href="javascript:void(0)">
-              <img src="/assets/qq.png" class="avatar-2 rounded-circle">
-            </a>
-          </td>
-          <td>
-            <span>
-              15 /
-              <small class="text-muted">
-                <small>1478</small>
-              </small>
-            </span>
-          </td>
-          <td>
-            <span class="badge badge-success">置顶</span>
-          </td>
-          <td>
-            <a  href="javascript:void(0)">
-              Node 地下铁第七期「深圳站」线下沙龙邀约 - Node.js 新生态
-            </a>
-          </td>
-          <td>
-            <img src="/assets/qq.png" class="avatar-1 rounded-circle">
-          </td>
-          <td>
-            12分钟前
+            asdasdasdasd    {{items.id}}
           </td>
         </tr>
-        <tr>
         </tbody>
       </table>
     </div>
