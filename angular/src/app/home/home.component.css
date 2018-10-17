@@ -4,6 +4,7 @@
 .avatar-2 {
   width: 2rem;
   height: 2rem;
+  border-radius: 3px;
 }
 .avatar-1{
   width: 1rem;

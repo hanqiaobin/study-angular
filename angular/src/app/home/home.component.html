@@ -4,9 +4,12 @@
       <table class="table table-hover table-outline table-vcenter text-nowrap card-table m-0">
         <tbody>
         <tr *ngFor="let items of topics.data">
+          <!--<td>{{items.author.avatar_url}}</td>-->
           <td>
-            asdasdasdasd    {{items.id}}
+            <div [style.background-image]="'url('+items.author.avatar_url+')'" class="avatar-2" [title]="[items.author.loginname]">
+            </div>
           </td>
+          <td>{{items.title}}</td>
         </tr>
         </tbody>
       </table>
@@ -18,7 +21,7 @@
         客户端地址
       </div>
       <div class="card-body text-center">
-        <qr-code [value]="'All QR Code data goes here!'" [size]="150" class="mw-100"></qr-code>
+        <qr-code [size]="200" [value]="'https://github.com/hanqiaobin/study-angular'" class="mw-100"></qr-code>
         <p class="small text-muted my-3">客户端源码地址</p>
       </div>
     </div>
