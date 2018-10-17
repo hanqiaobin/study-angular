@@ -10,7 +10,7 @@ export class HomeService {
   constructor(private http: HttpClient) {
   }
 
-  getTopics(page = 1,  tab = 'all', limit = 40, mdrender = true): Observable<any> {
+  getTopics(page: number,  tab = 'all', limit = 15, mdrender = true): Observable<any> {
     const params = new HttpParams({
       fromObject: {
         'page': `${page}`,
