@@ -9,6 +9,10 @@ import {DetailComponent} from './detail/detail.component';
 import {ProfileComponent} from './profile/profile.component';
 import {AppRoutingModule} from './app-routing.module';
 import {QRCodeModule} from 'angular2-qrcode';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule} from '@angular/forms';
+import {NgZorroAntdModule, NZ_I18N, zh_CN} from 'ng-zorro-antd';
+
 
 @NgModule({
   declarations: [
@@ -22,9 +26,12 @@ import {QRCodeModule} from 'angular2-qrcode';
     BrowserModule,
     AppRoutingModule,
     QRCodeModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    NgZorroAntdModule
   ],
-  providers: [],
+  providers: [{provide: NZ_I18N, useValue: zh_CN}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
