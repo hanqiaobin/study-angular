@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HomeService} from './home.service';
 import {Home} from './home';
 
@@ -8,7 +8,6 @@ import {Home} from './home';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  @ Input() currentPage: number;
   p = 1;
   home: Home = new Home;
   topics = {
