@@ -1,38 +1,61 @@
 <div class="row">
-  <!--<div class="col-md-9">-->
-  <div class="card">
-    <div class="table-responsive border">
-      <table class="table table-sm table-hover table-outline table-vcenter text-nowrap card-table m-0">
-        <tbody>
-        <tr *ngFor="let items of topics.data">
-          <!--<td>{{items.author.avatar_url}}</td>-->
-          <td>
-            <div class="ant-avatar-lg"
-                 [title]="[items.author.loginname]"
-                 [style.background-image]="'url('+items.author.avatar_url+')'">
-            </div>
-          </td>
-          <td>
-            <div class="small">
-              <span>{{items.reply_count}}</span> /
-              <span class="text-muted small">{{items.visit_count}}</span>
-            </div>
-          </td>
-          <td>
-            <a class="small" [routerLink]="['/detail',items.id]">{{items.title}}</a>
-          </td>
-          <td class="small">
-            {{items.last_reply_at | timeFromNow}}
-          </td>
-        </tr>
-        </tbody>
-      </table>
-      <div class="text-center" style="margin: 1.5rem 0">
-        <nz-pagination [nzPageIndex]="1" [nzTotal]="50" nzShowQuickJumper></nz-pagination>
+  <div class="col-md-9">
+    <div class="card">
+      <div class="table-responsive border">
+        <table class="table table-sm table-hover table-outline table-vcenter text-nowrap card-table m-0">
+          <tbody>
+          <tr *ngFor="let items of topics.data | paginate: { itemsPerPage: 2, currentPage: p }">
+            <td>
+              <div class="ant-avatar-lg"
+                   [title]="[items.author.loginname]"
+                   [style.background-image]="'url('+items.author.avatar_url+')'">
+              </div>
+            </td>
+            <td>
+              <div class="small">
+                <span>{{items.reply_count}}</span> /
+                <span class="text-muted small">{{items.visit_count}}</span>
+              </div>
+            </td>
+            <td class="small">
+              <small *ngIf="items.top" class="badge-warning p-1" style="border-radius: 3px">
+                置顶
+              </small>
+              <small *ngIf="!items.top" class="badge-secondary p-1" style="border-radius: 3px">
+                {{items.tab}}
+              </small>
+            </td>
+            <td>
+              <a class=" d-inline-block text-truncate" style="max-width: 40rem;" [routerLink]="['/detail',items.id]">{{items.title}}</a>
+            </td>
+            <td class="small">
+              {{items.last_reply_at | timeFromNow}}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-center small">
+          <pagination-controls
+            (pageChange)="p = $event"
+            previousLabel="上一页"
+            nextLabel="下一页"
+            directionLinks="true"
+            maxSize="7"
+            autoHide="false"
+            responsive="true"
+            class="myPagination">
+          </pagination-controls>
+          <div class="d-flex mx-3">
+            <span>当前页：</span>
+            <input type="number" class="form-control form-control-sm input-style" [(ngModel)]="p" name="p" style="width: 3rem;height: 1.2rem">
+          </div>
+        </div>
+        <!--<div class="text-center" style="margin: 1.5rem 0">-->
+        <!--<nz-pagination [nzPageIndex]="1" [nzTotal]="50" nzShowQuickJumper></nz-pagination>-->
+        <!--</div>-->
       </div>
     </div>
   </div>
-  <!--</div>-->
   <!--<div class="col-md-3">-->
   <!--<div class="card">-->
   <!--<div class="card-header">-->

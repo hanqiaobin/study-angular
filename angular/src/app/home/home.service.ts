@@ -10,8 +10,9 @@ export class HomeService {
   constructor(private http: HttpClient) {
   }
 
-  getTopics(page: number,  tab = 'all', limit = 15, mdrender = true): Observable<any> {
-    const params = new HttpParams({
+  getTopics(page: number, tab = 'all', limit: number, mdrender = true): Observable<any> {
+    /**
+     const params = new HttpParams({
       fromObject: {
         'page': `${page}`,
         'tab': tab,
@@ -19,8 +20,15 @@ export class HomeService {
         'mdrender': `${mdrender}`
       }
     });
+     写法一 需要引入 HttpParams
+     **/
     return this.http.get('https://cnodejs.org/api/v1/topics', {
-      params: params
+      params: {
+        'page': `${page}`,
+        'tab': tab,
+        'limit': `${limit}`,
+        'mdrender': `${mdrender}`
+      } // 写法二
     });
   }
 }
